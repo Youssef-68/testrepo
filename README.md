@@ -14,3 +14,12 @@ warningsfilterwarnings('ignore')
 
 house = pd.read_csv("/kaggle/input/the-boston-housing-dataset/Boston (1).csv")
 house.head()
+
+#data information
+house.info
+
+#check of duplicated values
+house.duplicated().sum()
+
+#summary of data
+house.describe
