@@ -1,25 +1,15 @@
+#Import necessary library
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 
-import os
-for dirname, _, filenames in os.walk('/kaggle/input'):
-    for filename in filenames:
-        print(os.path.join(dirname, filename))
+#fetech the data
+data = pd.read_csv('housing_prices.csv')
+print(data.isnull().sum())
+data.dropna(inplace=True)
 
-#to avoid warning
-import warninigs
-warningsfilterwarnings('ignore')
-
-house = pd.read_csv("/kaggle/input/the-boston-housing-dataset/Boston (1).csv")
-house.head()
-
-#data information
-house.info
-
-#check of duplicated values
-house.duplicated().sum()
-
-#summary of data
-house.describe
+#incoding categurall variables 
+data = pd.get_dummies(data, drop_first=True)
